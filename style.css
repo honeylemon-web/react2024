@@ -1,0 +1,31 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+  h1,header {
+    text-align: center;
+    font-size: 1.5em;
+  }
+
+  
+  p,ul,ol,dl,address {
+    font-size: 1.1em;
+  }
+  
+  p, li, dd, dt, address {
+    line-height: 1.5;
+  }
+
+  p{
+    color: brown;
+    text-align: center;
+  }
+
+  aside{
+    p{
+        text-align: left;
+
+    }
+  }
