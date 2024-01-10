@@ -2,6 +2,7 @@ import * as React from "react";
 import TransferList from "./transferList";
 import SelectFunc from "./select";
 import Footer from "./footer";
+import WebShare from "./WebShare";
 
 
 
@@ -44,6 +45,8 @@ export default function ButtonUsage() {
               <TransferList />
 
           </main>
+          <WebShare />
+
           </>
           
           <Footer /></>
