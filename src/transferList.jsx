@@ -21,7 +21,7 @@ function intersection(a, b) {
 
 export default function TransferList() {
   //  console.log(selectArray);
-  const arrayA = ["CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","new_cell->value = new_value;","new_cell->next = prev_cell->next;","new_cell->prev = prev_cell;","prev_cell->next = new_cell;","if(new_cell->next != NULL){","new_cell->next->prev = new_cell;","new_cell->next->prev = new_cell;","}","return new_cell;"];
+  const arrayA = ["return new_cell;","prev_cell->next = new_cell;","new_cell->prev = prev_cell;","if(new_cell->next != NULL){","CELL *new_cell;","new_cell->next->prev = new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","}","new_cell->next->prev = new_cell;","new_cell->value = new_value;","new_cell->next = prev_cell->next;"];
   const arrayB = ["d","e"];
   const correctA = ["CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","new_cell->value = new_value;","new_cell->next = prev_cell->next;","new_cell->prev = prev_cell;","prev_cell->next = new_cell;","if(new_cell->next != NULL){","new_cell->next->prev = new_cell;","new_cell->next->prev = new_cell;","}","return new_cell;"];
   const [checked, setChecked] = React.useState([]);
@@ -89,7 +89,7 @@ export default function TransferList() {
   };
 
   const customList = (items) => (
-    <Paper sx={{ width: 350, height: 300, overflow: 'auto' }}>
+    <Paper sx={{ width: 350, height: 400, overflow: 'auto' }}>
       <List dense component="div" role="list">
         {items.map((value) => {
           const labelId = `transfer-list-item-${value}-label`;
