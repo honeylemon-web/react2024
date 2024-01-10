@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
+import { colors } from '@mui/material';
 //import { selectArray } from './select';
 
 function not(a, b) {
@@ -20,9 +21,9 @@ function intersection(a, b) {
 
 export default function TransferList() {
   //  console.log(selectArray);
-  const arrayA = ["a","b","c"];
+  const arrayA = ["CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","new_cell->value = new_value;","new_cell->next = prev_cell->next;","new_cell->prev = prev_cell;","prev_cell->next = new_cell;","if(new_cell->next != NULL){","new_cell->next->prev = new_cell;","new_cell->next->prev = new_cell;","}","return new_cell;"];
   const arrayB = ["d","e"];
-  const correctA = ["b","a","c"];
+  const correctA = ["CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","new_cell->value = new_value;","new_cell->next = prev_cell->next;","new_cell->prev = prev_cell;","prev_cell->next = new_cell;","if(new_cell->next != NULL){","new_cell->next->prev = new_cell;","new_cell->next->prev = new_cell;","}","return new_cell;"];
   const [checked, setChecked] = React.useState([]);
   const [left, setLeft] = React.useState(arrayA);
   const [right, setRight] = React.useState([]);
@@ -88,7 +89,7 @@ export default function TransferList() {
   };
 
   const customList = (items) => (
-    <Paper sx={{ width: 200, height: 230, overflow: 'auto' }}>
+    <Paper sx={{ width: 350, height: 300, overflow: 'auto' }}>
       <List dense component="div" role="list">
         {items.map((value) => {
           const labelId = `transfer-list-item-${value}-label`;
@@ -122,7 +123,9 @@ export default function TransferList() {
     <><>
     
           <p>{judge ? "" :"左の枠に正しい順で並べ、一気に右の枠に回答を送ってね"}</p>
-          <p><strong>{judgeMes}</strong></p>
+          <p>
+            <strong>{judgeMes}</strong>
+            </p>
           <Grid container spacing={2} justifyContent="center" alignItems="center">
               <Grid item>{customList(left)}</Grid>
               <Grid item>
