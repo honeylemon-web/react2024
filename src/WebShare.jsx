@@ -1,5 +1,5 @@
 export default function WebShare() {
-   let shareData = {
+   /*let shareData = {
         title: 'Function Sort Quiz(FSQ)',
         text: 'Learn Function quickly and easily!',
         url: 'https://main--frolicking-daffodil-4842d9.netlify.app/',
@@ -16,8 +16,14 @@ export default function WebShare() {
           .catch((e) =>
             resultPara.textContent = 'Error: ' + e
           )
-      });
-    }
+      });*/
+      
+
+  return (
+    <><p><button>Please share this website!</button></p>
+    <p class="result"></p></>
+);
+}
 
 
 
