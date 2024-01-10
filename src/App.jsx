@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Button } from "@mui/material";
 import TransferList from "./transferList";
 import SelectFunc from "./select";
+import Footer from "./footer";
 
 
 
@@ -27,23 +27,26 @@ export default function ButtonUsage() {
       
 
   return (
-    <>
-    <header>
-      <h1>insert関数</h1>
-      <h2>CELL *insert(CELL *prev_cell, int new_value)</h2>
-    </header>
-    
+    <><>
+          <header>
+              <h1>insert関数</h1>
+              <h2>CELL *insert(CELL *prev_cell, int new_value)</h2>
+          </header>
 
-    <main>
-        <>
-        
-        </>
-    
-    
-        <SelectFunc />
-        <TransferList />
-        
-        </main></>
+
+          <main>
+              <>
+
+              </>
+
+
+              <SelectFunc />
+              <TransferList />
+
+          </main>
+          </>
+          
+          <Footer /></>
         
 
   );
