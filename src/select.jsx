@@ -25,7 +25,7 @@ export default function selectFunc(){
             }
            // setContent(text);
           }}>
-              <option value="A">AAA</option>
+              <option value="insert">insert</option>
               <option value="B">BBB</option>
              
             </select>
