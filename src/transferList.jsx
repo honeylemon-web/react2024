@@ -8,7 +8,8 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { colors } from '@mui/material';
-//import { selectArray } from './select';
+//import  selectArray  from './select';
+//import { selectedArray } from './select';
 
 function not(a, b) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -18,17 +19,30 @@ function intersection(a, b) {
   return a.filter((value) => b.indexOf(value) !== -1);
 }
 
+async function fetchFunc(name) {
+  // console.log("function ")
+  // const selectedArray = [];
+   const url = `${name}.json`;
+   const response = await fetch(url);
+   return response.json();
+}
+
 
 export default function TransferList() {
-  //  console.log(selectArray);
-  const arrayA = ["return new_cell;","prev_cell->next = new_cell;","new_cell->prev = prev_cell;","if(new_cell->next != NULL){","CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","}","new_cell->next->prev = new_cell;","new_cell->value = new_value;","new_cell->next = prev_cell->next;"];
-  const arrayB = ["d","e"];
+  const [selectArray, setSelectArray] = React.useState([""]); 
+  const [funcName,setFuncName] = React.useState("");
+
+
+  //const [question,setQuestion] = React.useState(selectedArray);
+
+  //const arrayA = ["return new_cell;","prev_cell->next = new_cell;","new_cell->prev = prev_cell;","if(new_cell->next != NULL){","CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","}","new_cell->next->prev = new_cell;","new_cell->value = new_value;","new_cell->next = prev_cell->next;"];
   const correctA = ["CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","new_cell->value = new_value;","new_cell->next = prev_cell->next;","new_cell->prev = prev_cell;","prev_cell->next = new_cell;","if(new_cell->next != NULL){","new_cell->next->prev = new_cell;","}","return new_cell;"];
+  const correctB = ["a","b","c","d","e","f","g"];
   const [checked, setChecked] = React.useState([]);
-  const [left, setLeft] = React.useState(arrayA);
+  const [left, setLeft] = React.useState(selectArray);
   const [right, setRight] = React.useState([]);
   const [judge,setJudge] = React.useState(false);
-  const correctArray = correctA;
+  const correctArray = correctB;
   const [judgeMes,setJudgeMes] = React.useState("");
 
   const leftChecked = intersection(checked, left);
@@ -59,7 +73,7 @@ export default function TransferList() {
   const handleAllRight = () => {
     setRight(right.concat(left));
     setLeft([]);
-    //もし、right配列と正解配列の中身が等しいならば正解と表示
+    
     if(isCorrect(right.concat(left),correctArray)){
         setJudge(true);
         setJudgeMes("正解！");
@@ -67,8 +81,7 @@ export default function TransferList() {
         setJudge(false);
         setJudgeMes("不正解！");
     }
-    //console.log(right.concat(left));
-   // console.log(isCorrect(right.concat(left),correctArray));
+
   };
 
   const handleCheckedRight = () => {
@@ -86,6 +99,18 @@ export default function TransferList() {
   const handleAllLeft = () => {
     setLeft(left.concat(right));
     setRight([]);
+  };
+
+  const handleCheckedDown = () => {
+    const removeCheckedRight = not(right, rightChecked);
+    setRight(removeCheckedRight.concat(rightChecked));
+    setChecked(not(checked, rightChecked));//右の欄だけdown可能
+  };
+
+  const handleCheckedUp = () => {
+    const removeCheckedRight = not(right, rightChecked);
+    setRight(rightChecked.concat(removeCheckedRight));
+    setChecked(not(checked,rightChecked));
   };
 
   const customList = (items) => (
@@ -119,63 +144,105 @@ export default function TransferList() {
     </Paper>
   );
 
-  return (
-    <><>
-    
-          <p>{judge ? "" :"左の枠に正しい順で並べ、一気に右の枠に回答を送ってね"}</p>
-          <p>
-            <strong>{judgeMes}</strong>
-            </p>
-          <Grid container spacing={2} justifyContent="center" alignItems="center">
-              <Grid item>{customList(left)}</Grid>
-              <Grid item>
-                  <Grid container direction="column" alignItems="center">
-                      <Button
-                          sx={{ my: 0.5 }}
-                          variant="outlined"
-                          size="small"
-                          onClick={handleAllRight}
-                          disabled={left.length === 0}
-                          aria-label="move all right"
-                      >
-                          ≫
-                      </Button>
-                      <Button
-                          sx={{ my: 0.5 }}
-                          variant="outlined"
-                          size="small"
-                          onClick={handleCheckedRight}
-                          disabled={leftChecked.length === 0}
-                          aria-label="move selected right"
-                      >
-                          &gt;
-                      </Button>
-                      <Button
-                          sx={{ my: 0.5 }}
-                          variant="outlined"
-                          size="small"
-                          onClick={handleCheckedLeft}
-                          disabled={rightChecked.length === 0}
-                          aria-label="move selected left"
-                      >
-                          &lt;
-                      </Button>
-                      <Button
-                          sx={{ my: 0.5 }}
-                          variant="outlined"
-                          size="small"
-                          onClick={handleAllLeft}
-                          disabled={right.length === 0}
-                          aria-label="move all left"
-                      >
-                          ≪
-                      </Button>
-                  </Grid>
-              </Grid>
-              <Grid item>{customList(right)}</Grid>
-          </Grid></>
-          </>
-  );
-}
+ 
 
-//export {judge};
+return (
+    
+        <><form>
+    <label htmlFor="function-choose">Choose a function<br></br></label>
+    <select id="function-choose" onChange={async (event) => {
+      const name = event.target.value;
+      setFuncName(name);
+      const data = await fetchFunc(name);
+      setLeft(data);
+      setRight([]);
+      setSelectArray(data);
+    } }>
+      <option value="insert">insert</option>
+      <option value="print_post_order">print_post_oreder</option>
+      <option value="tutorial">tutorial</option> 
+    </select>
+  </form><article>
+      <h1>{funcName}関数</h1>
+      <p>
+        {funcName === "insert" ? "この関数は、双方向リストを扱う際に利用され、あるノード(prev_cell)の次に新しいノードを挿入する関数である。" : ""}
+        {funcName === "print_post_order" ? "アルゴリズム: 二分木" : ""}<br></br>
+        {funcName === "print_post_order" ? "内容: pを根ノードとする二分木に対して帰りがけ順で走査をする関数である。" : ""}
+      </p>
+    </article><h2>{funcName === "insert" ? "CELL *insert(CELL *prev_cell, int new_value)" : ""}
+      {funcName === "print_post_order" ? "void post_order(BITREE_NODE *p)" : ""}
+    </h2><p>{judge ? "" : "左の枠に正しい順で並べ、一気に右の枠に回答を送ってね"}</p><p>
+      <strong>{judgeMes}</strong>
+    </p><Grid container spacing={2} justifyContent="center" alignItems="center">
+      <Grid item>{customList(left)}</Grid>
+      <Grid item>
+        <Grid container direction="column" alignItems="center">
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleAllRight}
+            disabled={left.length === 0}
+            aria-label="move all right"
+          >
+            ≫
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleCheckedRight}
+            disabled={leftChecked.length === 0}
+            aria-label="move selected right"
+          >
+            &gt;
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleCheckedLeft}
+            disabled={rightChecked.length === 0}
+            aria-label="move selected left"
+          >
+            &lt;
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleAllLeft}
+            disabled={right.length === 0}
+            aria-label="move all left"
+          >
+            ≪
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleCheckedUp}
+            disabled={rightChecked.length === 0}
+            aria-label="up"
+          >
+            ↑↑
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleCheckedDown}
+            disabled={rightChecked.length === 0}
+            aria-label="down"
+          >
+            ↓↓
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid item>{customList(right)}</Grid>
+    </Grid>
+      </>
+
+  );
+
+} 

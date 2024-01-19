@@ -4,13 +4,48 @@ body {
   }
   
   
-  h1,header {
+  header {
     text-align: center;
-    font-size: 1.5em;
+
+    h1{  
+      font-size: 1.5em;
+    } 
+
+    h2{
+      font-size: 1em;
+    }
+
+    p{
+      font-size:1;
+      color:black; 
+    
+    }
   }
 
-  h2{
-    font-size: 1em;
+  
+
+  main{
+    text-align: center;
+
+    h1{  
+      font-size: 1.5em;
+    } 
+
+    h2{
+      font-size: 1em;
+    }
+
+    p{
+      font-size:1;
+      color:black;
+    }
+    p{
+      color: brown;
+    }
+
+    form{
+      text-align: left;
+    }
   }
   
   p,ul,ol,dl,address {
@@ -21,17 +56,9 @@ body {
     line-height: 1.5;
   }
 
-  p{
-    color: brown;
-    text-align: center;
-  }
+  
 
-  aside{
-    p{
-        text-align: left;
 
-    }
-  }
 
   footer{
     p{

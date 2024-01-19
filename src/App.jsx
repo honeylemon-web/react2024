@@ -1,6 +1,5 @@
 import * as React from "react";
 import TransferList from "./transferList";
-import SelectFunc from "./select";
 import Footer from "./footer";
 //import WebShare from "./WebShare";
 
@@ -40,19 +39,14 @@ Permission to copy, modify, and distribute this work, with or without modificati
   return (
     <><>
           <header>
-              <h1>insert関数</h1>
-              <h2>CELL *insert(CELL *prev_cell, int new_value)</h2>
+              <h1>コード並び替えクイズ</h1>
+              <h2>このページの使い方</h2>
+              <p>最初にオプションから好きな関数を選ぶ。処理が1行ずつ表示されるため、左の欄に正しい順序で処理が並ぶように移動させ、左の欄の選択肢全てを右の欄に移動させる（移動ボタンの一番上を押す）ことで回答できる。回答が正しいかどうかは上に表示される。何度も回答することが可能である。</p>
           </header>
 
 
           <main>
-              <>
-
-              </>
-
-
-              <SelectFunc />
-              <TransferList />
+             <TransferList />
 
           </main>
 
