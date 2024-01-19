@@ -38,11 +38,14 @@ export default function TransferList() {
   //const arrayA = ["return new_cell;","prev_cell->next = new_cell;","new_cell->prev = prev_cell;","if(new_cell->next != NULL){","CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","}","new_cell->next->prev = new_cell;","new_cell->value = new_value;","new_cell->next = prev_cell->next;"];
   const correctA = ["CELL *new_cell;","new_cell = (CELL *)malloc(sizeof(CELL));","new_cell->value = new_value;","new_cell->next = prev_cell->next;","new_cell->prev = prev_cell;","prev_cell->next = new_cell;","if(new_cell->next != NULL){","new_cell->next->prev = new_cell;","}","return new_cell;"];
   const correctB = ["a","b","c","d","e","f","g"];
+  const correctPostOrder = ["if(p->left != NULL){","post_order(p->left);","printf(\"->\");\\\\1個目","}\\\\1個目","if(p->right != NULL){","post_order(p->right);","printf(\"->\");\\\\2個目","}\\\\2個目","printf(\"%d\",p->value);"];
+
   const [checked, setChecked] = React.useState([]);
   const [left, setLeft] = React.useState(selectArray);
   const [right, setRight] = React.useState([]);
   const [judge,setJudge] = React.useState(false);
-  const correctArray = correctB;
+  //const correctArray = correctPostOrder;
+  const [correctArray,setCorrectArray] = React.useState("");
   const [judgeMes,setJudgeMes] = React.useState("");
 
   const leftChecked = intersection(checked, left);
@@ -52,8 +55,6 @@ export default function TransferList() {
     const filteredArray = array.filter((currentValue, index) =>{
         return currentValue === correctArray[index];
     });
-    console.log(array);
-    console.log(correctArray);
     return filteredArray.length === correctArray.length;
   };
 
@@ -70,18 +71,19 @@ export default function TransferList() {
     setChecked(newChecked);
   };
 
+  const answer = () =>{
+    if(isCorrect(right,correctArray)){
+      setJudge(true);  
+      setJudgeMes("正解！");
+    }else{
+      setJudge(false);
+      setJudgeMes("不正解！");
+    }
+  }
+
   const handleAllRight = () => {
     setRight(right.concat(left));
     setLeft([]);
-    
-    if(isCorrect(right.concat(left),correctArray)){
-        setJudge(true);
-        setJudgeMes("正解！");
-    }else{
-        setJudge(false);
-        setJudgeMes("不正解！");
-    }
-
   };
 
   const handleCheckedRight = () => {
@@ -114,7 +116,7 @@ export default function TransferList() {
   };
 
   const customList = (items) => (
-    <Paper sx={{ width: 350, height: 400, overflow: 'auto' }}>
+    <Paper sx={{ width: 350, height: 300, overflow: 'auto' }}>
       <List dense component="div" role="list">
         {items.map((value) => {
           const labelId = `transfer-list-item-${value}-label`;
@@ -154,18 +156,24 @@ return (
       const name = event.target.value;
       setFuncName(name);
       const data = await fetchFunc(name);
-      setLeft(data);
+      console.log(data);
+      console.log(data.Q);
+      setLeft(data.Q);
       setRight([]);
+      setCorrectArray(data.A);
+      setJudgeMes("");
+      console.log(data.A);    
       setSelectArray(data);
     } }>
       <option value="insert">insert</option>
-      <option value="print_post_order">print_post_oreder</option>
-      <option value="tutorial">tutorial</option> 
+      <option value="tutorial">tutorial</option>
+      <option value="print_post_order">print_post_order</option> 
     </select>
   </form><article>
       <h1>{funcName}関数</h1>
       <p>
         {funcName === "insert" ? "この関数は、双方向リストを扱う際に利用され、あるノード(prev_cell)の次に新しいノードを挿入する関数である。" : ""}
+        {funcName === "tutorial" ? "アルファベット順に並べ、ANSWERを押して回答してみよう!":""}
         {funcName === "print_post_order" ? "アルゴリズム: 二分木" : ""}<br></br>
         {funcName === "print_post_order" ? "内容: pを根ノードとする二分木に対して帰りがけ順で走査をする関数である。" : ""}
       </p>
@@ -240,6 +248,20 @@ return (
         </Grid>
       </Grid>
       <Grid item>{customList(right)}</Grid>
+      <Grid item>
+        <Grid container direction="column" alignItems="center">
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={answer}
+            disabled={right.length === 0}
+            aria-label="answer"
+          >
+            Answer
+          </Button>
+        </Grid>
+      </Grid>
     </Grid>
       </>
 
