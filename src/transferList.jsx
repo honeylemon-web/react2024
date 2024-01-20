@@ -8,8 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { colors } from '@mui/material';
-//import  selectArray  from './select';
-//import { selectedArray } from './select';
+
 
 function not(a, b) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -151,7 +150,7 @@ export default function TransferList() {
 return (
     
         <><form>
-    <label htmlFor="function-choose">Choose a function<br></br></label>
+    <label htmlFor="function-choose"></label>
     <select id="function-choose" onChange={async (event) => {
       const name = event.target.value;
       setFuncName(name);
@@ -165,21 +164,30 @@ return (
       console.log(data.A);    
       setSelectArray(data);
     } }>
+      <option selected disabled>Select</option>
       <option value="insert">insert</option>
       <option value="tutorial">tutorial</option>
       <option value="print_post_order">print_post_order</option> 
     </select>
-  </form><article>
+  </form>
+  <article className='balloon1'>
       <h1>{funcName}関数</h1>
       <p>
-        {funcName === "insert" ? "この関数は、双方向リストを扱う際に利用され、あるノード(prev_cell)の次に新しいノードを挿入する関数である。" : ""}
+        {funcName === "insert" ? <span className='css-br'>アルゴリズム : 双方向リスト( 連結リスト )</span>: ""}
+        {funcName === "insert" ? "内容 : prev_cellの次に新しいノードを挿入する関数である。" : ""} 
         {funcName === "tutorial" ? "アルファベット順に並べ、ANSWERを押して回答してみよう!":""}
-        {funcName === "print_post_order" ? "アルゴリズム: 二分木" : ""}<br></br>
-        {funcName === "print_post_order" ? "内容: pを根ノードとする二分木に対して帰りがけ順で走査をする関数である。" : ""}
+        {funcName === "print_post_order" ? <span className='css-br'>アルゴリズム : 二分木</span> : ""}
+        {funcName === "print_post_order" ? "内容 : pを根ノードとする二分木に対して帰りがけ順で走査をする関数である。" : ""}
+        <span className='css-br'></span>
+        <span className='css-br'></span>
+        <p className='define'>
+          
+          {funcName === "insert" ? "CELL *insert(CELL *prev_cell, int new_value)" : ""}
+          {funcName === "print_post_order" ? "void post_order(BITREE_NODE *p)" : ""}
+       </p>
       </p>
-    </article><h2>{funcName === "insert" ? "CELL *insert(CELL *prev_cell, int new_value)" : ""}
-      {funcName === "print_post_order" ? "void post_order(BITREE_NODE *p)" : ""}
-    </h2><p>{judge ? "" : "左の枠に正しい順で並べ、一気に右の枠に回答を送ってね"}</p><p>
+    </article>
+    <p>{judge ? "" : "右の枠に正しい順で並べて「ANSWER」で回答を送ろう"}</p><p>
       <strong>{judgeMes}</strong>
     </p><Grid container spacing={2} justifyContent="center" alignItems="center">
       <Grid item>{customList(left)}</Grid>

@@ -9,11 +9,52 @@ body {
 
     h1{  
       font-size: 1.5em;
+      color: #2e57d3;
+      padding: 0.5em 0;
+      border-top: dashed 3px #4a65b7;
+      border-bottom: dashed 3px #4a65b7;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
     } 
 
     h2{
-      font-size: 1em;
+      font-size: 1em;     
+      border-bottom: solid 1.5px #364e96;
+ 
     }
+
+    .guide{
+      color: #364e96;/*文字色*/
+      border: solid 2px #364e96;/*線色*/
+      background: #eaedf2;
+      padding: 0.5em;/*文字周りの余白*/
+      border-radius: 0.5em;/*角丸*/
+
+    }
+
+    .func {
+      position: relative;
+      margin: 2em 0;
+      padding: 0.5em 1em;
+      border: solid 3px #95ccff;
+      border-radius: 8px;
+  }
+  .func .func-title {
+      position: absolute;
+      display: inline-block;
+      top: -13px;
+      transform: translateX(-50%);
+      padding: 0 9px;
+      line-height: 1;
+      font-size: 19px;
+      background: #FFF;
+      color: #95ccff;
+      font-weight: bold;
+  }
+  .func p {
+      margin: 0; 
+      padding: 0;
+  }
+        
 
     p{
       font-size:1;
@@ -21,19 +62,53 @@ body {
     
     }
   }
+  .css-br::after {
+    content: "\A" ;
+    white-space: pre;
+  }
+
+  .balloon1 {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 15px;
+
+  }
+  
+  .balloon1:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e0edff;
+  }
+  
+  .balloon1 p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .define {
+    font-size:2;
+    font-weight: bold;
+    color:#555;
+  }
 
   
 
   main{
     text-align: center;
 
-    h1{  
-      font-size: 1.5em;
-    } 
-
-    h2{
-      font-size: 1em;
-    }
+  
+ 
 
     p{
       font-size:1;
@@ -44,8 +119,31 @@ body {
     }
 
     form{
+      right: 10px;
+      top: 50%;
+      padding: 1em 0;
       text-align: left;
     }
+
+
+    
+    select {
+      /* 初期化 */
+     
+      border-radius: 5px;
+      color: #333;
+      font-size: 16px;
+      padding: 0 10px;
+      height: 40px;
+      width: 180px;
+      position: relative;
+      background: #c6dbfd url({https://ginneko-atelier.com}/assets/arrow.svg) no-repeat right 10px center / 16px auto;
+    }
+    
+    option[selected][disabled] {
+      display: none;
+    }
+
   }
   
   p,ul,ol,dl,address {
@@ -56,14 +154,16 @@ body {
     line-height: 1.5;
   }
 
-  
+  .share{
+    text-align: center;
+    transform: translateY(-100);
+  }
 
 
 
   footer{
-    p{
         text-align: right;
         color: black;
-        font-size: 1;
-    }
+        font-size: 10px;
+        transform: translateY(60);
   }

@@ -40,8 +40,10 @@ Permission to copy, modify, and distribute this work, with or without modificati
     <><>
           <header>
               <h1>コード並び替えクイズ</h1>
-              <h2>このページの使い方</h2>
-              <p>最初にオプションから好きな関数を選ぶ。処理が1行ずつ表示されるため、右の欄に正しい順で並べる。右の欄では、上ボタン下とボタンでチェックされたものを並び替えることができる。ANSWERボタンを押して回答できる。回答が正しいかどうかは上に表示される。何度も回答することが可能である。</p>
+              <div className="guide">
+                <h2>このページの使い方</h2>
+                <p>最初にオプションから好きな関数を選ぶ。処理が1行ずつ表示されるため、右の欄に正しい順で並べる。右の欄では、上ボタン下とボタンでチェックされたものを並び替えることができる。ANSWERボタンを押して回答できる。回答が正しいかどうかは上に表示される。何度も回答することが可能である。</p>
+              </div>
           </header>
 
 
@@ -58,7 +60,6 @@ Permission to copy, modify, and distribute this work, with or without modificati
   );
 }
 
-//export { default as TransferList } from "./transferList.jsx";
 
 
 
