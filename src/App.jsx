@@ -12,7 +12,7 @@ export default function ButtonUsage() {
         url: 'https://main--frolicking-daffodil-4842d9.netlify.app/',
       }
 
-      const btn = document.querySelector('button');
+      const btn = document.querySelector('.share');
       const resultPara = document.querySelector('.result');
 
       btn.addEventListener('click', () => {

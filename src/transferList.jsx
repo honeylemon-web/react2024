@@ -177,7 +177,7 @@ return (
         {funcName === "insert" ? "内容 : prev_cellの次に新しいノードを挿入する関数である。" : ""} 
         {funcName === "tutorial" ? "アルファベット順に並べ、ANSWERを押して回答してみよう!":""}
         {funcName === "print_post_order" ? <span className='css-br'>アルゴリズム : 二分木</span> : ""}
-        {funcName === "print_post_order" ? "内容 : pを根ノードとする二分木に対して帰りがけ順で走査をする関数である。" : ""}
+        {funcName === "print_post_order" ? "内容 : 引数pを根ノードとする二分木に対して帰りがけ順で走査をして値を出力する関数である。" : ""}
         <span className='css-br'></span>
         <span className='css-br'></span>
         <p className='define'>
