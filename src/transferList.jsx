@@ -189,6 +189,7 @@ return (
     </article>
     <p>{judge ? "" : "右の枠に正しい順で並べて「ANSWER」で回答を送ろう"}</p><p>
       <strong>{judgeMes}</strong>
+      
     </p><Grid container spacing={2} justifyContent="center" alignItems="center">
       <Grid item>{customList(left)}</Grid>
       <Grid item>
@@ -257,20 +258,17 @@ return (
       </Grid>
       <Grid item>{customList(right)}</Grid>
       <Grid item>
-        <Grid container direction="column" alignItems="center">
-          <Button
-            sx={{ my: 0.5 }}
-            variant="outlined"
-            size="small"
+      
+      </Grid>
+    </Grid>
+    <button href="#"
             onClick={answer}
+            className="btn-square" 
             disabled={right.length === 0}
             aria-label="answer"
           >
             Answer
-          </Button>
-        </Grid>
-      </Grid>
-    </Grid>
+          </button>
       </>
 
   );

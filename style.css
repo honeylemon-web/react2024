@@ -157,13 +157,45 @@ body {
   .share{
     text-align: center;
     transform: translateY(-100);
+
+  }
+
+  .btn-square {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+  }
+  .btn-square:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
+
+  .btn-gradient-radius {
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+  }
+  
+  .btn-gradient-radius:hover {
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
   }
 
 
 
   footer{
         text-align: right;
-        color: black;
+        color: rgb(255, 255, 255);
         font-size: 10px;
         transform: translateY(60);
+        background: #364e96;
   }
