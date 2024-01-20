@@ -165,8 +165,8 @@ return (
       setSelectArray(data);
     } }>
       <option selected disabled>Select</option>
-      <option value="insert">insert</option>
       <option value="tutorial">tutorial</option>
+      <option value="insert">insert</option>
       <option value="print_post_order">print_post_order</option> 
     </select>
   </form>
