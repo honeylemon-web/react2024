@@ -18,6 +18,16 @@ function intersection(a, b) {
   return a.filter((value) => b.indexOf(value) !== -1);
 }
 
+function minIndex(a, b){//aはrightchecked、bはright
+  let min = b.indexOf(a[0]);
+  a.forEach((value) => {
+    if(b.indexOf(value) < min){
+      min = b.indexOf(value);
+    }
+  });
+  return min;
+}
+
 async function fetchFunc(name) {
   // console.log("function ")
   // const selectedArray = [];
@@ -112,6 +122,20 @@ export default function TransferList() {
     const removeCheckedRight = not(right, rightChecked);
     setRight(rightChecked.concat(removeCheckedRight));
     setChecked(not(checked,rightChecked));
+  };
+
+  const handleCheckedNext = () => {
+    const nextIndex = minIndex(rightChecked, right) + 1;
+    const removeCheckedRight = not(right, rightChecked);
+    setRight(removeCheckedRight.toSpliced(nextIndex, 0, ...rightChecked));
+    //setChecked(not(checked,rightChecked));
+  };
+
+  const handleCheckedBack = () => {
+    const backIndex = minIndex(rightChecked, right) - 1;
+    const removeCheckedRight = not(right, rightChecked);
+    setRight(removeCheckedRight.toSpliced(backIndex, 0, ...rightChecked));
+    //setChecked(not(checked,rightChecked));
   };
 
   const customList = (items) => (
@@ -248,12 +272,32 @@ return (
             sx={{ my: 0.5 }}
             variant="outlined"
             size="small"
+            onClick={handleCheckedBack}
+            disabled={rightChecked.length === 0}
+            aria-label="back"
+          >
+            ↑
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
+            onClick={handleCheckedNext}
+            disabled={rightChecked.length === 0}
+            aria-label="next"
+          >
+            ↓
+          </Button>
+          <Button
+            sx={{ my: 0.5 }}
+            variant="outlined"
+            size="small"
             onClick={handleCheckedDown}
             disabled={rightChecked.length === 0}
             aria-label="down"
           >
             ↓↓
-          </Button>
+          </Button>         
         </Grid>
       </Grid>
       <Grid item>{customList(right)}</Grid>
