@@ -273,7 +273,7 @@ return (
             variant="outlined"
             size="small"
             onClick={handleCheckedBack}
-            disabled={rightChecked.length === 0}
+            disabled={rightChecked.length === 0 || minIndex(rightChecked, right) === 0}
             aria-label="back"
           >
             ↑
@@ -283,7 +283,7 @@ return (
             variant="outlined"
             size="small"
             onClick={handleCheckedNext}
-            disabled={rightChecked.length === 0}
+            disabled={rightChecked.length === 0 || minIndex(rightChecked, right) === right.length-1}
             aria-label="next"
           >
             ↓
