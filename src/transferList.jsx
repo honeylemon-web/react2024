@@ -101,6 +101,10 @@ export default function TransferList() {
     }
   }
 
+  const uncheck = () =>{
+    setChecked([]);
+  }
+
   const handleAllRight = () => {
     setRight(right.concat(left));
     setLeft([]);
@@ -150,10 +154,35 @@ export default function TransferList() {
   };
 
   const customList = (items) => (
-    <Paper sx={{ width: 350, height: 300, overflow: 'auto' }}>
-      <List dense component="div" role="list">
+    <Paper sx={{ width: 350, height: 300, overflow: 'auto', backgroundColor:'#eaedf2' }} className='paper' >
+      <List dense component="div" role="list" className='list'> 
         {items.map((value) => {
           const labelId = `transfer-list-item-${value}-label`;
+          let cl = "#353535";
+
+          if(value.indexOf("->") !== -1){
+            cl = "#005af7"
+          }
+
+          if(value.indexOf("{") !== -1){
+            cl = "chocolate"
+          }
+
+          if(value.indexOf("}") !== -1){
+            cl = "chocolate"
+          }
+
+          if(value.indexOf("return") !== -1){
+            cl = "mediumvioletred"
+          }
+
+          if(value.indexOf("malloc") !== -1){
+            cl = "olivedrab"
+          }
+                   
+          if(value.indexOf("post_order") !== -1){
+            cl = "#cea800"
+          }
 
           return (
             <ListItem
@@ -161,8 +190,9 @@ export default function TransferList() {
               role="listitem"
               button
               onClick={handleToggle(value)}
+              className='listItem'
             >
-              <ListItemIcon>
+              <ListItemIcon className='listItemIcon'>
                 <Checkbox
                   checked={checked.indexOf(value) !== -1}
                   tabIndex={-1}
@@ -170,9 +200,23 @@ export default function TransferList() {
                   inputProps={{
                     'aria-labelledby': labelId,
                   }}
+                  sx={{
+                    /*color: "#1E90FF",*/
+                    '&.Mui-checked': {
+                      color: "#1E90FF",
+                    },
+                  }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`${value}`} />
+              <ListItemText
+                 id={labelId} 
+                 primary={`${value}`}
+                 primaryTypographyProps={{
+                  color: cl,
+                  fontWeight: 'medium',
+                  variant: 'body2',
+                 }}
+                 className='listItemText'/>
             </ListItem>
           );
         })}
@@ -311,20 +355,33 @@ return (
           </Button>         
         </Grid>
       </Grid>
-      <Grid item>{customList(right)}</Grid>
-      <Grid item>
-      
+      <Grid 
+        item
+        className='right-box'  
+        
+      >
+        {customList(right)}
       </Grid>
     </Grid>
+    <Grid item>
     <button href="#"
+            onClick={uncheck}
+            className="btn-square-uncheck" 
+            disabled={checked.length === 0}
+            aria-label="uncheck"
+          >
+            Uncheck
+    </button>
+      <button href="#"
             onClick={answer}
             className="btn-square" 
             disabled={right.length === 0}
             aria-label="answer"
           >
             Answer
-          </button>
-      </>
+    </button>
+    </Grid>
+   </>
 
   );
 
