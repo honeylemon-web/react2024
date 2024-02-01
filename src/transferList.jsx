@@ -28,6 +28,17 @@ function minIndex(a, b){//aはrightchecked、bはright
   return min;
 }
 
+function maxIndex(a, b){//aはrightchecked、bはright
+  let max = b.indexOf(a[0]);
+  a.forEach((value) => {
+    if(b.indexOf(value) > max){
+      max = b.indexOf(value);
+    }
+  });
+  return max;
+}
+
+
 async function fetchFunc(name) {
   // console.log("function ")
   // const selectedArray = [];
@@ -283,7 +294,7 @@ return (
             variant="outlined"
             size="small"
             onClick={handleCheckedNext}
-            disabled={rightChecked.length === 0 || minIndex(rightChecked, right) === right.length-1}
+            disabled={rightChecked.length === 0 || maxIndex(rightChecked, right) === right.length-1}
             aria-label="next"
           >
             ↓
