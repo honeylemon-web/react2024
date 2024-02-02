@@ -64,8 +64,8 @@ export default function TransferList() {
   const [left, setLeft] = React.useState(selectArray);
   const [right, setRight] = React.useState([]);
   const [judge,setJudge] = React.useState(false);
-  //const correctArray = correctPostOrder;
-  const [correctArray,setCorrectArray] = React.useState("");
+  //const correctArrays = correctPostOrder;
+  const [correctArrays,setCorrectArrays] = React.useState([]);
   const [judgeMes,setJudgeMes] = React.useState("");
 
   const leftChecked = intersection(checked, left);
@@ -92,13 +92,20 @@ export default function TransferList() {
   };
 
   const answer = () =>{
-    if(isCorrect(right,correctArray)){
+    const TF = [];
+    for(let i = 0;i < correctArrays.length;i++){
+      TF.push(isCorrect(right, correctArrays[i]));
+    }
+
+    if(TF.indexOf(true) !== -1){
       setJudge(true);  
       setJudgeMes("正解！");
     }else{
       setJudge(false);
       setJudgeMes("不正解！");
     }
+
+    
   }
 
   const uncheck = () =>{
@@ -238,10 +245,12 @@ return (
       console.log(data.Q);
       setLeft(data.Q);
       setRight([]);
-      setCorrectArray(data.A);
+      setChecked([]);
+      setCorrectArrays(data.A);
       setJudgeMes("");
       console.log(data.A);    
       setSelectArray(data);
+      setJudge(false);
     } }>
       <option selected disabled>Select</option>
       <option value="tutorial">tutorial</option>
