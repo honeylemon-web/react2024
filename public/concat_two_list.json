@@ -1,0 +1,12 @@
+{
+
+    "Q": ["if(head2->next != NULL){","}　\\\\if文ブロックを閉じる","free(head2);","head2->next->prev = cur;","while(cur->next != NULL){","}　\\\\while文ブロックを閉じる","CELL *cur = head1;","cur->next = head2->next;","cur = cur->next;"],
+ 
+    "A": [
+        ["CELL *cur = head1;","while(cur->next != NULL){","cur = cur->next;","}　\\\\while文ブロックを閉じる","cur->next = head2->next;","if(head2->next != NULL){","head2->next->prev = cur;","free(head2);","}　\\\\if文ブロックを閉じる"],
+        ["CELL *cur = head1;","while(cur->next != NULL){","cur = cur->next;","}　\\\\while文ブロックを閉じる","if(head2->next != NULL){","cur->next = head2->next;","head2->next->prev = cur;","free(head2);","}　\\\\if文ブロックを閉じる"]
+    ]
+ 
+ }
+
+    

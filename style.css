@@ -185,7 +185,7 @@ body {
   }*/
 
   .btn-square {
-    transform: translateX(20px);
+    transform: translateX(10px);
     margin-top: 20px;
     margin-bottom: 10px;
     display: inline-block;
@@ -198,8 +198,8 @@ body {
   }
   .btn-square:active {
     /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px) translateX(20px);
-    transform: translateY(4px) translateX(20px);/*下に動く*/
+    -webkit-transform: translateY(4px) translateX(10px);
+    transform: translateY(4px) translateX(10px);/*下に動く*/
     border-bottom: none;/*線を消す*/
     margin-bottom: 14px;
   }
@@ -211,14 +211,14 @@ body {
   }
 
   .btn-square:disabled:active{
-    -webkit-transform: translateY(0px) translateX(20px);
-    transform: translateY(0px) translateX(20px);
+    -webkit-transform: translateY(0px) translateX(10px);
+    transform: translateY(0px) translateX(10px);
     margin-bottom: 10px;
   }
 
   .btn-square-uncheck {
-   /* transform: translateX(220px);
-   */ margin-top: 20px;
+    transform: translateX(-15px);
+    margin-top: 20px;
     margin-bottom: 10px;
     display: inline-block;
     padding: 0.5em 1em;
@@ -230,8 +230,8 @@ body {
   }
   .btn-square-uncheck:active {
     /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px) /*translateX(220px)*/;/*下に動く*/
+    -webkit-transform: translateY(4px) translateX(-15px);
+    transform: translateY(4px) translateX(-15px);/*下に動く*/
     border-bottom: none;/*線を消す*/
     margin-bottom: 14px;
   }
@@ -243,8 +243,8 @@ body {
   }
 
   .btn-square-uncheck:disabled:active{
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
+    -webkit-transform: translateY(0px) translateX(-15px);
+    transform: translateY(0px) translateX(-15px);
     margin-bottom: 10px;
   }
   

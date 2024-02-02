@@ -1,8 +1,8 @@
 {
  
-    "Q": ["post_order(p->right);","printf(\"%d\",p->value);","}\\\\2個目","if(p->left != NULL){","printf(\"->\");\\\\1個目","if(p->right != NULL){","post_order(p->left);","}\\\\1個目","printf(\"->\");\\\\2個目"],
+    "Q": ["post_order(p->right);","printf(\"%d\",p->value);","}\\\\if文閉じる 2個目","if(p->left != NULL){","printf(\"->\");\\\\1個目","if(p->right != NULL){","post_order(p->left);","}\\\\if文閉じる 1個目","printf(\"->\");\\\\2個目"],
  
-    "A": [["if(p->left != NULL){","post_order(p->left);","printf(\"->\");\\\\1個目","}\\\\1個目","if(p->right != NULL){","post_order(p->right);","printf(\"->\");\\\\2個目","}\\\\2個目","printf(\"%d\",p->value);"]]
+    "A": [["if(p->left != NULL){","post_order(p->left);","printf(\"->\");\\\\1個目","}\\\\if文閉じる 1個目","if(p->right != NULL){","post_order(p->right);","printf(\"->\");\\\\2個目","}\\\\if文閉じる 2個目","printf(\"%d\",p->value);"]]
 
 }
 

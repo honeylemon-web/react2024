@@ -171,19 +171,29 @@ export default function TransferList() {
             cl = "#005af7"
           }
 
-          if(value.indexOf("{") !== -1){
+          if(value.indexOf("if") !== -1){
             cl = "chocolate"
           }
 
-          if(value.indexOf("}") !== -1){
+          if(value.indexOf("if") !== -1){
             cl = "chocolate"
           }
+
+          if(value.indexOf("while") !== -1){
+            cl = "#ce1417"
+          }
+
+          if(value.indexOf("while") !== -1){
+            cl = "#ce1417"
+          }
+
+          
 
           if(value.indexOf("return") !== -1){
             cl = "mediumvioletred"
           }
 
-          if(value.indexOf("malloc") !== -1){
+          if(value.indexOf("malloc") !== -1 || value.indexOf("free") !== -1){
             cl = "olivedrab"
           }
                    
@@ -255,7 +265,8 @@ return (
       <option selected disabled>Select</option>
       <option value="tutorial">tutorial</option>
       <option value="insert">insert</option>
-      <option value="print_post_order">print_post_order</option> 
+      <option value="concat_two_list">concat_two_list</option>
+      <option value="print_post_order">print_post_order</option>
     </select>
   </form>
   <article className='balloon1'>
@@ -265,13 +276,17 @@ return (
         {funcName === "insert" ? "内容 : prev_cellの次に新しいノードを挿入する関数である。" : ""} 
         {funcName === "tutorial" ? "アルファベット順に並べ、ANSWERを押して回答してみよう!":""}
         {funcName === "print_post_order" ? <span className='css-br'>アルゴリズム : 二分木</span> : ""}
-        {funcName === "print_post_order" ? "内容 : 引数pを根ノードとする二分木に対して帰りがけ順で走査をして値を出力する関数である。" : ""}
+        {funcName === "print_post_order" ? "内容 : 引数pを根ノードとする二分木に対して帰りがけ順で走査をして値を出力する関数である。" : ""}     
+        {funcName === "concat_two_list" ? <span className='css-br'>アルゴリズム : 双方向リスト( 連結リスト )</span>: ""}
+        {funcName === "concat_two_list" ? "内容 : 2つの連結リストが与えられたときに、1つ目の末尾に2つ目のリストの各ノードを順番に連結させる関数である。各連結リストの先頭にはダミーノードがセットされている。" : ""}
+
         <span className='css-br'></span>
         <span className='css-br'></span>
         <p className='define'>
           
           {funcName === "insert" ? "CELL *insert(CELL *prev_cell, int new_value)" : ""}
           {funcName === "print_post_order" ? "void post_order(BITREE_NODE *p)" : ""}
+          {funcName === "concat_two_list" ? "void concat_two_list(CELL *head1, CELL *head2)" : ""}
        </p>
       </p>
     </article>
