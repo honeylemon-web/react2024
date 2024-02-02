@@ -102,6 +102,9 @@ body {
     color:#555;
   }
 
+
+ 
+
   
 
   main{
@@ -160,6 +163,27 @@ body {
 
   }
 
+  .h{
+    color: #454545;
+    font-size: 15px;
+  }
+
+  .s{
+    color:#364e96;
+    font-weight: bold;
+  }
+
+  .c{
+    color:#c94848;
+    font-weight: bold;
+    font-size: 15px;
+
+  }
+
+  .e{
+    color:#294fb9;
+    font-size: 15px;
+  }
 
 
 
@@ -249,7 +273,25 @@ body {
   }
   
 
- 
+  .cbtn-gradient-radius {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    font-weight: bold;
+    background: #ecab6f;/*ボタン色*/
+    color: #29478d;
+    border-bottom: solid 4px #957f62;
+    border-radius: 3px;
+  }
+  .cbtn-gradient-radius:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px) translateX(10px);
+    transform: translateY(4px) translateX(10px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+    margin-bottom: 14px;
+  }
 
 
 

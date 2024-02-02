@@ -272,25 +272,30 @@ return (
   <article className='balloon1'>
       <h1>{funcName}関数</h1>
       <p>
-        {funcName === "insert" ? <span className='css-br'>アルゴリズム : 双方向リスト( 連結リスト )</span>: ""}
-        {funcName === "insert" ? "内容 : prev_cellの次に新しいノードを挿入する関数である。" : ""} 
-        {funcName === "tutorial" ? "アルファベット順に並べ、ANSWERを押して回答してみよう!":""}
-        {funcName === "print_post_order" ? <span className='css-br'>アルゴリズム : 二分木</span> : ""}
-        {funcName === "print_post_order" ? "内容 : 引数pを根ノードとする二分木に対して帰りがけ順で走査をして値を出力する関数である。" : ""}     
-        {funcName === "concat_two_list" ? <span className='css-br'>アルゴリズム : 双方向リスト( 連結リスト )</span>: ""}
-        {funcName === "concat_two_list" ? "内容 : 2つの連結リストが与えられたときに、1つ目の末尾に2つ目のリストの各ノードを順番に連結させる関数である。各連結リストの先頭にはダミーノードがセットされている。" : ""}
+        
+        {funcName === "insert" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>双方向リスト( 連結リスト )</span></span>: ""}
+        {funcName === "insert" ? <span><span className='h'>内容 : </span><span className='s'>"prev_cellの次にnew_valueを値に持つ新しいノードを挿入する。</span></span> : ""} 
+        {funcName === "tutorial" ? <span className='s'>アルファベット順に並べ、ANSWERを押して回答してみよう!</span>:""}
+        {funcName === "print_post_order" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>二分木</span></span> : ""}
+        {funcName === "print_post_order" ? <span><span className='h'>内容 : </span><span className='s'>引数pを根ノードとする二分木に対して帰りがけ順で走査をして値を出力する。</span></span> : ""}     
+        {funcName === "concat_two_list" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>双方向リスト( 連結リスト )</span></span>: ""}
+        {funcName === "concat_two_list" ? <span><span className='h'>内容 : </span><span className='s'>2つの連結リストが与えられたときに、1つ目の末尾に2つ目のリストの各ノードを順番に連結させる。各連結リストの先頭にはダミーノードがセットされている。</span></span> : ""}
 
         <span className='css-br'></span>
-        <span className='css-br'></span>
-        <p className='define'>
+       
+       
+       {funcName === "insert" ? <span className='css-br'><span className='h'>条件 : </span><span className='c'>新たなセルを作り、値としてnew_valueを代入してからポインタの差し替えを行うこと。</span></span>: ""}
+      </p>
+      <span className='css-br'></span>
+
+      <p className='define'>
           
           {funcName === "insert" ? "CELL *insert(CELL *prev_cell, int new_value)" : ""}
           {funcName === "print_post_order" ? "void post_order(BITREE_NODE *p)" : ""}
           {funcName === "concat_two_list" ? "void concat_two_list(CELL *head1, CELL *head2)" : ""}
        </p>
-      </p>
     </article>
-    <p>{judge ? "" : "右の枠に正しい順で並べて「ANSWER」で回答を送ろう"}</p><p>
+    <p className='e'>{judge ? "" : "右の枠に正しい順で並べて「ANSWER」で回答を送ろう"}</p><p>
       <strong>{judgeMes}</strong>
       
     </p><Grid container spacing={2} justifyContent="center" alignItems="center">
@@ -394,7 +399,7 @@ return (
             disabled={checked.length === 0}
             aria-label="uncheck"
           >
-            Uncheck
+            UNCHECK
     </button>
       <button href="#"
             onClick={answer}
@@ -402,7 +407,7 @@ return (
             disabled={right.length === 0}
             aria-label="answer"
           >
-            Answer
+            ANSWER
     </button>
     </Grid>
    </>
