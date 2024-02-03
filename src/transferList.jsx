@@ -264,9 +264,13 @@ return (
     } }>
       <option selected disabled>Select</option>
       <option value="tutorial">tutorial</option>
-      <option value="insert">insert</option>
-      <option value="concat_two_list">concat_two_list</option>
-      <option value="print_post_order">print_post_order</option>
+      <optgroup label="連結リスト">
+        <option value="insert">insert</option>
+        <option value="concat_two_list">concat_two_list</option>
+      </optgroup>
+      <optgroup label="二分木">
+        <option value="print_post_order">print_post_order</option>
+      </optgroup>
     </select>
   </form>
   <article className='balloon1'>
