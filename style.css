@@ -96,6 +96,7 @@ body {
     padding: 0;
   }
 
+
   .define {
     font-size:2;
     font-weight: bold;
@@ -186,7 +187,13 @@ body {
   }
 
 
+.opt-g{
+  color: #364e96;
+}
 
+.opt{
+  color: #333;
+}
 
 
  /* .listItemText {

@@ -263,13 +263,15 @@ return (
       setJudge(false);
     } }>
       <option selected disabled>Select</option>
-      <option value="tutorial">tutorial</option>
-      <optgroup label="連結リスト">
-        <option value="insert">insert</option>
-        <option value="concat_two_list">concat_two_list</option>
+      <optgroup label="チュートリアル" className='opt-g'>
+        <option value="tutorial" className='opt'>tutorial</option>
       </optgroup>
-      <optgroup label="二分木">
-        <option value="print_post_order">print_post_order</option>
+      <optgroup label="連結リスト" className='opt-g'>
+        <option value="insert" className='opt'>insert</option>
+        <option value="concat_two_list" className='opt'>concat_two_list</option>
+      </optgroup>
+      <optgroup label="二分木" className='opt-g'>
+        <option value="print_post_order" className='opt'>print_post_order</option>
       </optgroup>
     </select>
   </form>
