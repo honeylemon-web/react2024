@@ -188,11 +188,15 @@ body {
 
 
 .opt-g{
-  color: #364e96;
+  color: #929292;
+  font-size: 10px;
+
 }
 
 .opt{
   color: #333;
+  font-size: 15px;
+
 }
 
 
