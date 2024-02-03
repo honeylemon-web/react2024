@@ -187,6 +187,9 @@ export default function TransferList() {
             cl = "#ce1417"
           }
 
+          if(value.indexOf("for") !== -1){
+            cl = "#0d8924"
+          }
           
 
           if(value.indexOf("return") !== -1){
@@ -200,6 +203,9 @@ export default function TransferList() {
           if(value.indexOf("post_order") !== -1){
             cl = "#cea800"
           }
+
+          
+
 
           return (
             <ListItem
@@ -266,6 +272,9 @@ return (
       <optgroup label="チュートリアル" className='opt-g'>
         <option value="tutorial" className='opt'>tutorial</option>
       </optgroup>
+      <optgroup label="計算" className='opt-g'>
+        <option value="is_prime_number" className='opt'>is_prime_number</option>
+      </optgroup>
       <optgroup label="連結リスト" className='opt-g'>
         <option value="insert" className='opt'>insert</option>
         <option value="concat_two_list" className='opt'>concat_two_list</option>
@@ -280,12 +289,18 @@ return (
       <p>
         
         {funcName === "insert" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>双方向リスト( 連結リスト )</span></span>: ""}
-        {funcName === "insert" ? <span><span className='h'>内容 : </span><span className='s'>"prev_cellの次にnew_valueを値に持つ新しいノードを挿入する。</span></span> : ""} 
+        {funcName === "insert" ? <span><span className='h'>内容 : </span><span className='s'>prev_cellの次にnew_valueを値に持つ新しいノードを挿入する。</span></span> : ""} 
+     
         {funcName === "tutorial" ? <span className='s'>アルファベット順に並べ、ANSWERを押して回答してみよう!</span>:""}
+       
         {funcName === "print_post_order" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>二分木</span></span> : ""}
         {funcName === "print_post_order" ? <span><span className='h'>内容 : </span><span className='s'>引数pを根ノードとする二分木に対して帰りがけ順で走査をして値を出力する。</span></span> : ""}     
+      
         {funcName === "concat_two_list" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>双方向リスト( 連結リスト )</span></span>: ""}
         {funcName === "concat_two_list" ? <span><span className='h'>内容 : </span><span className='s'>2つの連結リストが与えられたときに、1つ目の末尾に2つ目のリストの各ノードを順番に連結させる。各連結リストの先頭にはダミーノードがセットされている。</span></span> : ""}
+
+        {funcName === "is_prime_number" ? <span className='css-br'><span className='h'>アルゴリズム : </span><span className='s'>演算子・分岐・繰り返し</span></span>: ""}
+        {funcName === "is_prime_number" ? <span><span className='h'>内容 : </span><span className='s'>引数として与えられたnが素数か否かを判定する。素数の場合は1、素数でない場合は0を返す。</span></span> : ""} 
 
         <span className='css-br'></span>
        
@@ -295,10 +310,11 @@ return (
       <span className='css-br'></span>
 
       <p className='define'>
-          
+      
           {funcName === "insert" ? "CELL *insert(CELL *prev_cell, int new_value)" : ""}
           {funcName === "print_post_order" ? "void post_order(BITREE_NODE *p)" : ""}
           {funcName === "concat_two_list" ? "void concat_two_list(CELL *head1, CELL *head2)" : ""}
+          {funcName === "is_prime_number" ? "int isPrimeNumber(int n)" : ""}
        </p>
     </article>
     <p className='e'>{judge ? "" : "右の枠に正しい順で並べて「ANSWER」で回答を送ろう"}</p><p>
